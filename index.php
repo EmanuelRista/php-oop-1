@@ -18,6 +18,15 @@ class StanzaHotel
   {
     echo ("Piano: " . $this->piano . "; Numero letti: " . $this->posti_letto . "; Numero bagni: " . $this->numero_bagni . "; <br>");
   }
+
+  public function to_json()
+  {
+    return json_encode([
+      'Letti' => $this->posti_letto,
+      'Bagni' => $this->numero_bagni,
+      'Piano' => $this->piano
+    ]);
+  }
 }
 
 $stanza1 = new StanzaHotel('1');
@@ -41,6 +50,9 @@ $stanza2 = new StanzaHotel('2', 3, 8);
   $stanza2->to_string();
 
   ?>
+
+  <?= $stanza1->to_json(); ?>
+  <?= $stanza2->to_json(); ?>
 
 </body>
 
